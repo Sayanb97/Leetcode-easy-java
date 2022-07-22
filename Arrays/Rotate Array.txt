@@ -1,0 +1,19 @@
+With stack O(N)
+
+class Solution {
+    public void rotate(int[] nums, int k) {
+        int len = nums.length;
+        k = k % len;
+        Stack<Integer> s = new Stack<Integer>();
+        for(int i=1; i<=k; i++) {
+            s.push(nums[len-i]);
+        }
+        for(int i=len-k-1; i>=0; i--) {
+            nums[i+k] = nums[i];
+        }
+        for(int i=0; i<k; i++) {
+            nums[i] = s.peek();
+            s.pop();
+        }
+    }
+}
